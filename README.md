@@ -1,2 +1,2 @@
 # FAA-ADS-API
-API for search though ads
+API for search though ADs
