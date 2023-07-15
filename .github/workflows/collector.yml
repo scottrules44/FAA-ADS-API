@@ -15,7 +15,7 @@ env:
 
 jobs:
   collect-ads:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout Repository
@@ -39,6 +39,6 @@ jobs:
         uses: EndBug/add-and-commit@v4
         with:
           message: "Auto-updating ADS"
-          add: "*"
+          add: "data.json"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
