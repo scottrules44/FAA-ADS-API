@@ -1,6 +1,12 @@
 name: Collect ADS
 
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+       description: 'Version Release'
+       required: false
+       default: '99999.0'
   schedule:
     - cron: "0 0 * * 0"  # Cron expression for running every Sunday at 12:00 AM UTC
 
