@@ -1,0 +1,38 @@
+name: Collect ADS
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # Cron expression for running every Sunday at 12:00 AM UTC
+
+env:
+  WORKSPACE: ${{ github.workspace }}
+
+jobs:
+  collect-ads:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.0
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python Script
+        env:
+            API_SECRET: ${{ secrets.API_SECRET }}
+        run: |
+          python collect.py $API_SECRET
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: "Auto-updating ADS"
+          add: "*"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
