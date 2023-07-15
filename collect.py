@@ -22,6 +22,7 @@ def delete_and_modify_first_line(file_path, new_character):
 request = requests.get(drsUrl, headers = {"x-api-key": sys.argv[1]})
 obj = json.loads(request.text)
 f = open("data.json", "a")
+f.truncate(0) # Clear file
 f.write(json.dumps(obj, indent=4))
 f.close()
 
