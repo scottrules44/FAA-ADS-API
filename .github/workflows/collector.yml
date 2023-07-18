@@ -8,7 +8,7 @@ on:
        required: false
        default: '99999.0'
   schedule:
-    - cron: "0 0 * * 0"  # Cron expression for running every Sunday at 12:00 AM UTC
+    - cron: "0 0 * * *"  # Cron expression for running every Day at 12:00 AM UTC
 
 env:
   WORKSPACE: ${{ github.workspace }}
